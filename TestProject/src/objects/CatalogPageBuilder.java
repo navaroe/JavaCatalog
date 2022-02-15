@@ -16,10 +16,10 @@ public class CatalogPageBuilder {
 		int selectedPage = pageNumber - 1;
 		int pagesQuantity = categoryListLength / pageLength;
 		if (selectedPage > pagesQuantity) {
-			System.out.println("Страница не найдена");
+			System.out.println("Page not found");
 		} else {
 			if (categoryListLength > pageLength) {	
-				System.out.println("ID\tНазвание категории");
+				System.out.println("ID\tCategory name");
 				if (selectedPage == pagesQuantity) {
 					for (int counter = 0; counter < categoryListLength - selectedPage * pageLength ; counter++)
 						System.out.println(categoryList.get(counter + selectedPage * pageLength).getCategoryId() + " " + categoryList.get(counter + selectedPage * pageLength).getCategoryName());
@@ -28,7 +28,7 @@ public class CatalogPageBuilder {
 						System.out.println(categoryList.get(counter + selectedPage * pageLength).getCategoryId() + " " + categoryList.get(counter + selectedPage * pageLength).getCategoryName());
 				}					
 			} else {
-				System.out.println("ID\tНазвание категории");
+				System.out.println("ID\tCategory name");
 				for (int counter = 0; counter < categoryListLength ; counter++)
 					System.out.println(categoryList.get(counter).getCategoryId() + "\t" + categoryList.get(counter).getCategoryName());
 			}

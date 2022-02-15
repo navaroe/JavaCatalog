@@ -19,7 +19,7 @@ public class CategoryHandler {
 			}
 		}
 		if (selectedCategory == null) {
-			System.out.println("Категория с данным ID не найдена");
+			System.out.println("Category not found");
 		} 
 		return selectedCategory;
 	}

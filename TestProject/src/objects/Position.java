@@ -44,6 +44,6 @@ public class Position {
 	
 	public void showPosition() {
 		String formatedPrice = String.format("%.2f", this.positionPrice);
-		System.out.println("Позиция: " + this.positionName + " Количество: " + this.positionQuantity + " " + this.unit + " Стоимость: " + formatedPrice + " у.е.");
+		System.out.println("Position: " + this.positionName + " Quantity: " + this.positionQuantity + " " + this.unit + " Price: " + formatedPrice);
 	}
 }
