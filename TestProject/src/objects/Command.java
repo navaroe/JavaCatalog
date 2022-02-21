@@ -28,6 +28,7 @@ public class Command {
 				            		System.out.println("Selected category already added to catalog");
 				            	} else {
 				            		catalog.categoryAdd(categoryHandler.categorySelect(categoryId));
+				            		System.out.println("Category " + categoryHandler.categorySelect(categoryId).getCategoryName() + " added to catalog");
 				            	}
 				            } else {
 				            	System.out.println("Selected category does not exist");
@@ -44,6 +45,7 @@ public class Command {
 				            if (categoryHandler.categoryExist(categoryId)) {
 				            	if (catalog.categoryExist(categoryId)) {
 				            		catalog.categoryRemove(categoryHandler.categorySelect(categoryId));
+				            		System.out.println("Category " + categoryHandler.categorySelect(categoryId).getCategoryName() + " removed from catalog");
 				            		
 				            	} else {
 				            		System.out.println("Selected category is not in the catalog");
@@ -68,7 +70,7 @@ public class Command {
 				            categoryId = Integer.parseInt(commandList[2]);
 				            if (categoryHandler.categoryExist(categoryId)) {
 				            	if (categoryHandler.categorySelect(categoryId).categoryNotEmpty()) {
-				            		System.out.println("Category contains " + categoryHandler.categorySelect(categoryId).countCategoryPages() + " pages");
+				            		System.out.println("Category " + categoryHandler.categorySelect(categoryId).getCategoryName() + " contains " + categoryHandler.categorySelect(categoryId).countCategoryPages() + " pages");
 				            	} else {
 				            		System.out.println("Category empty");
 				            	}					            
@@ -103,7 +105,7 @@ public class Command {
 							            }
 									}
 								    catch (NumberFormatException error){
-							        	System.out.println("Input erre");
+							        	System.out.println("Input error");
 								    }		
 								}
 								break;
@@ -168,7 +170,8 @@ public class Command {
 						            if (!categoryHandler.categorySelect(categoryId).categoryNotEmpty()) {
 						            	catalog.categoryAdd(categoryHandler.categorySelect(categoryId));
 						            }
-						            categoryHandler.categorySelect(categoryId).positionAdd(categoryHandler.categorySelect(categoryId).accessPositionHandler().positionSelect(commandList[3]));	
+						            categoryHandler.categorySelect(categoryId).positionAdd(categoryHandler.categorySelect(categoryId).accessPositionHandler().positionSelect(commandList[3]));
+						            System.out.println("Position " + commandList[3] + " added to category " + categoryHandler.categorySelect(categoryId).getCategoryName());
 					            }
 				            } else {
 				            	System.out.println("Seleted position does not exist");
@@ -184,6 +187,7 @@ public class Command {
 				            if (categoryHandler.categorySelect(categoryId).accessPositionHandler().positionExist(commandList[3])) {
 				            	if (categoryHandler.categorySelect(categoryId).positionExist("commandList[3]")) {
 						            categoryHandler.categorySelect(categoryId).positionRemove(categoryHandler.categorySelect(categoryId).accessPositionHandler().positionSelect(commandList[3]));
+						            System.out.println("Position " + commandList[3] + " removed from category " + categoryHandler.categorySelect(categoryId).getCategoryName());
 						            if (!categoryHandler.categorySelect(categoryId).categoryNotEmpty()) {
 						            	catalog.categoryRemove(categoryHandler.categorySelect(categoryId));
 						            } else {
@@ -218,7 +222,7 @@ public class Command {
 					            	System.out.println("Position name length exceeded");
 				            	} else {						            
 						            categoryHandler.categorySelect(categoryId).accessPositionHandler().positionCreate(commandList[3], positionUnitNumber, positionPrice, positionQuantity);	
-						            System.out.println("Position " + commandList[3] + " added to a category " + categoryHandler.categorySelect(categoryId).getCategoryName());
+						            System.out.println("Position " + commandList[3] + " created in category " + categoryHandler.categorySelect(categoryId).getCategoryName());
 						            if (positionQuantity > 0) {
 							            if (!categoryHandler.categorySelect(categoryId).categoryNotEmpty()) {
 							            	catalog.categoryAdd(categoryHandler.categorySelect(categoryId));					            	
@@ -256,6 +260,7 @@ public class Command {
 				            	float newPositionPrice = Float.parseFloat(commandList[4]);
 				            	if (newPositionPrice >= 0) {
 				            		categoryHandler.categorySelect(categoryId).accessPositionHandler().positionSelect(commandList[3]).setPositionPrice(newPositionPrice);
+				            		System.out.println("Set price " + commandList[4] + " to position " + categoryHandler.categorySelect(categoryId).accessPositionHandler().positionSelect(commandList[3]).getPositionName());
 				            	} else {
 				            		System.out.println("New price incorrect");
 				            	}
